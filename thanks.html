@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Köszönjük! – CumiCharms</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
+<!-- GA4 – cseréld le: G-XXXXXXXXXX -->
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+  gtag('event', 'generate_lead', { event_category: 'quote_request', event_label: 'cumicharms_form' });
+</script> -->
+
+<!-- Google Ads Conversion – cseréld le: AW-XXXXXXXXX és CONVERSION_LABEL -->
+<!-- <script>
+  gtag('event', 'conversion', { 'send_to': 'AW-XXXXXXXXX/CONVERSION_LABEL' });
+</script> -->
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream:   #FFF8F5;
+    --coral:   #F4826A;
+    --coral-d: #D9634A;
+    --pink:    #F9C4C4;
+    --mint:    #C5E8D8;
+    --mint-d:  #7FCBB0;
+    --ink:     #2D2D2D;
+    --muted:   #7A6E6E;
+    --white:   #FFFFFF;
+    --radius:  16px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 17px;
+    line-height: 1.65;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── NAV ── */
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 5vw;
+    background: var(--white);
+    border-bottom: 2px solid var(--pink);
+  }
+  .nav-logo {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.5rem;
+    color: var(--coral);
+    text-decoration: none;
+  }
+  .nav-back {
+    background: var(--coral);
+    color: var(--white);
+    padding: 9px 22px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: background .2s;
+  }
+  .nav-back:hover { background: var(--coral-d); }
+
+  /* ── MAIN ── */
+  main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 5vw 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  main::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: 50%;
+    transform: translateX(-50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, var(--pink) 0%, transparent 65%);
+    opacity: .4;
+    pointer-events: none;
+  }
+
+  /* ── BEADS ── */
+  .beads {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
+  }
+  .string {
+    height: 2px;
+    width: 100%;
+    max-width: 300px;
+    background: linear-gradient(to right, transparent, var(--muted) 20%, var(--muted) 80%, transparent);
+    margin: 0 auto 32px;
+    opacity: .25;
+    position: relative;
+    z-index: 1;
+  }
+  .bead {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    opacity: 0;
+    transform: translateY(-12px);
+    animation: dropBead .4s ease forwards;
+  }
+  .bead:nth-child(1)  { background:#F4826A; animation-delay:.1s; }
+  .bead:nth-child(2)  { background:#F9C4C4; animation-delay:.2s; }
+  .bead:nth-child(3)  { background:#C5E8D8; animation-delay:.3s; }
+  .bead:nth-child(4)  { background:#F4E07A; animation-delay:.4s; }
+  .bead:nth-child(5)  { background:#B8D4F4; animation-delay:.5s; }
+  .bead:nth-child(6)  { background:#F4826A; animation-delay:.6s; }
+  .bead.letter {
+    width: 30px; height: 30px;
+    background: var(--white);
+    border: 2.5px solid var(--coral);
+    font-weight: 700;
+    font-size: .85rem;
+    color: var(--coral);
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+  }
+  .bead.letter:nth-child(7)  { animation-delay:.7s; }
+  .bead.letter:nth-child(8)  { animation-delay:.8s; }
+  .bead.letter:nth-child(9)  { animation-delay:.9s; }
+
+  @keyframes dropBead {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .bead { animation: none; opacity: 1; transform: none; }
+  }
+
+  /* ── CHECKMARK ── */
+  .check-wrap {
+    position: relative;
+    z-index: 1;
+    width: 80px; height: 80px;
+    background: var(--mint);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 28px;
+    animation: popIn .5s cubic-bezier(.34,1.56,.64,1) 1.2s both;
+  }
+  .check-wrap svg {
+    width: 40px; height: 40px;
+    stroke: var(--mint-d);
+    stroke-width: 3;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 60;
+    stroke-dashoffset: 60;
+    animation: drawCheck .4s ease 1.7s forwards;
+  }
+  @keyframes popIn {
+    from { opacity: 0; transform: scale(.5); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+  @keyframes drawCheck {
+    to { stroke-dashoffset: 0; }
+  }
+
+  /* ── TEXT ── */
+  .ty-label {
+    font-size: .8rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 10px;
+    position: relative; z-index: 1;
+    opacity: 0;
+    animation: fadeUp .5s ease 1.4s forwards;
+  }
+  h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(2rem, 6vw, 3rem);
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 16px;
+    position: relative; z-index: 1;
+    opacity: 0;
+    animation: fadeUp .5s ease 1.55s forwards;
+  }
+  h1 span { color: var(--coral); }
+  .subtitle {
+    max-width: 460px;
+    color: var(--muted);
+    font-size: 1.05rem;
+    margin-bottom: 40px;
+    position: relative; z-index: 1;
+    opacity: 0;
+    animation: fadeUp .5s ease 1.7s forwards;
+  }
+
+  /* ── INFO CARDS ── */
+  .cards {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 680px;
+    margin-bottom: 44px;
+    position: relative; z-index: 1;
+    opacity: 0;
+    animation: fadeUp .5s ease 1.9s forwards;
+  }
+  .card {
+    background: var(--white);
+    border: 2px solid var(--pink);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    flex: 1 1 180px;
+    text-align: left;
+  }
+  .card-icon { font-size: 1.5rem; margin-bottom: 6px; }
+  .card-title {
+    font-weight: 700;
+    font-size: .95rem;
+    margin-bottom: 4px;
+    color: var(--ink);
+  }
+  .card-body {
+    font-size: .88rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ── CTA ── */
+  .cta-group {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative; z-index: 1;
+    opacity: 0;
+    animation: fadeUp .5s ease 2.05s forwards;
+  }
+  .btn-primary {
+    background: var(--coral);
+    color: var(--white);
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background .2s;
+  }
+  .btn-primary:hover { background: var(--coral-d); }
+  .btn-secondary {
+    background: transparent;
+    color: var(--coral);
+    padding: 14px 32px;
+    border-radius: 50px;
+    border: 2px solid var(--coral);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background .2s, color .2s;
+  }
+  .btn-secondary:hover { background: var(--coral); color: var(--white); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 28px 5vw;
+    border-top: 2px solid var(--pink);
+    background: var(--white);
+    font-size: .88rem;
+    color: var(--muted);
+  }
+  .footer-logo {
+    font-family: 'Pacifico', cursive;
+    color: var(--coral);
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 6px;
+  }
+  footer a { color: var(--coral); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">CumiCharms</a>
+  <a class="nav-back" href="index.html">← Vissza a főoldalra</a>
+</nav>
+
+<main>
+  <div class="beads">
+    <div class="bead"></div>
+    <div class="bead"></div>
+    <div class="bead"></div>
+    <div class="bead"></div>
+    <div class="bead"></div>
+    <div class="bead"></div>
+    <div class="bead letter">✓</div>
+    <div class="bead letter">💌</div>
+    <div class="bead letter">✨</div>
+  </div>
+  <div class="string"></div>
+
+  <div class="check-wrap">
+    <svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 6"/></svg>
+  </div>
+
+  <p class="ty-label">Megrendelés elküldve</p>
+  <h1>Köszönjük, <span>kész!</span></h1>
+  <p class="subtitle">Megkaptuk az álmaidat – hamarosan személyre szabjuk a tökéletes CumiCharms szettet a kis babádnak. 🌈</p>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">⏰</div>
+      <div class="card-title">24 órán belül</div>
+      <div class="card-body">Visszajelzünk e-mailben az árajánlattal és a következő lépésekkel.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">✂️</div>
+      <div class="card-title">Kézzel készített</div>
+      <div class="card-body">Minden lánc egyedi – a megadott színekre és figurákra szabva.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">📦</div>
+      <div class="card-title">Gyors szállítás</div>
+      <div class="card-body">Elkészülés után 2–3 munkanapon belül megérkezik a csomagod.</div>
+    </div>
+  </div>
+
+  <div class="cta-group">
+    <a class="btn-primary" href="https://www.instagram.com/cumicharms" target="_blank">Kövess minket Instán 📸</a>
+    <a class="btn-secondary" href="index.html">Vissza a főoldalra</a>
+  </div>
+</main>
+
+<footer>
+  <span class="footer-logo">CumiCharms</span>
+  <p>Budapest, 1145 &nbsp;·&nbsp; <a href="mailto:cumicharms@gmail.com">cumicharms@gmail.com</a> &nbsp;·&nbsp; <a href="https://www.instagram.com/cumicharms" target="_blank">@cumicharms</a></p>
+  <p style="margin-top:8px">© 2025 CumiCharms – Minden jog fenntartva.</p>
+</footer>
+
+</body>
+</html>
